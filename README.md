@@ -10,4 +10,4 @@ Google官方mvp项目 todomvp 的简化版
 3.使用国内常用界面 底部导航栏 + ViewPager ；
 
 
-![image](https://github.com/Xing94/todoMvpApp/blob/master/%E7%95%8C%E9%9D%A2.jpg)
+![image](/%E7%95%8C%E9%9D%A2.jpg)
