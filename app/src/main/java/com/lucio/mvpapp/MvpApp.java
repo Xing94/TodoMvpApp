@@ -4,8 +4,9 @@ import android.app.Application;
 import android.content.Context;
 
 
-import com.lucio.mvpapp.util.ToastUtil;
-import com.lucio.mvpapp.util.net.RetrofitUtil;
+import com.lucio.appframework.AppConstant;
+import com.lucio.appframework.util.ToastUtil;
+import com.lucio.appframework.net.RetrofitUtil;
 
 import java.util.concurrent.TimeUnit;
 
@@ -26,11 +27,10 @@ public class MvpApp extends Application {
 
         mClient = new OkHttpClient.Builder()
                 .retryOnConnectionFailure(true)
-//                .readTimeout(0, TimeUnit.SECONDS)
                 .connectTimeout(9, TimeUnit.SECONDS)
                 .build();
 
-        RetrofitUtil.setBaseUrl(AppConstant.getHost());
+        RetrofitUtil.setBaseUrl(AppConstant.getHost(),getClient());
     }
 
     public static Context getContext() {
@@ -41,7 +41,6 @@ public class MvpApp extends Application {
         if (mClient == null) {
             mClient = new OkHttpClient.Builder()
                     .retryOnConnectionFailure(true)
-//                    .readTimeout(0, TimeUnit.SECONDS)
                     .connectTimeout(9, TimeUnit.SECONDS)
                     .build();
         }

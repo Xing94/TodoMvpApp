@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.Xing94:CustomView:1.0.2@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6671c91745b038ab9e3d27e7c04531cd/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6671c91745b038ab9e3d27e7c04531cd/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.Xing94/CustomView/1.0.2/4b7bd18e3bd2dadecf57e628622bdac9ec7b6ed/CustomView-1.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

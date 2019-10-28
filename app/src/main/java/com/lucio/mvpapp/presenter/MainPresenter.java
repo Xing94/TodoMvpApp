@@ -7,12 +7,20 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
 
-import com.lucio.mvpapp.R;
-import com.lucio.mvpapp.contract.MainContract;
+import com.lucio.appframework.contract.MainContract;
 import com.lucio.mvpapp.data.bean.LoginBean;
-import com.lucio.mvpapp.util.LogUtil;
-import com.lucio.mvpapp.util.net.NetCallBack;
-import com.lucio.mvpapp.util.net.RetrofitUtil;
+import com.lucio.mvpapp.data.source.remote.MainService;
+import com.lucio.appframework.net.RetrofitUtil;
+import com.lucio.appframework.net.RxNetCallBack;
+import com.lucio.appframework.util.LogUtil;
+import com.lucio.mvpapp.R;
+
+import org.reactivestreams.Subscription;
+
+import io.reactivex.FlowableSubscriber;
+import io.reactivex.schedulers.Schedulers;
+import okhttp3.Call;
+import retrofit2.Response;
 
 /**
  * 主页面
@@ -34,18 +42,15 @@ public class MainPresenter implements MainContract.Presenter {
     @Override
     public void netRequest() {
 
-        RetrofitUtil.request(mView, RetrofitUtil.getMainService().login("1311111111", "24cfeed0c1c1d9ed3414afc78d096b67"),
-                new NetCallBack<LoginBean>() {
+        RetrofitUtil.getService(MainService.class).login("","")
+                .observeOn(Schedulers.newThread())
+                .subscribe(new RxNetCallBack<LoginBean>(mView) {
                     @Override
-                    public void onSuccess(LoginBean bean) {
-                        Message msg = mHandler.obtainMessage();
-                        msg.obj = bean;
-                        msg.what = 101;
-                        mHandler.sendMessage(msg);
-                        LogUtil.out(bean.toString());
-                        mView.showToast("成功了");
+                    public void onSuccess(LoginBean data) {
+
                     }
                 });
+
     }
 
     @Override

@@ -2,13 +2,14 @@ package com.lucio.mvpapp.view.activity;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import com.lucio.mvpapp.R;
-import com.lucio.mvpapp.base.BaseActivity;
-import com.lucio.mvpapp.contract.MainContract;
+import com.lucio.appframework.base.BaseActivity;
+import com.lucio.appframework.contract.MainContract;
 import com.lucio.mvpapp.presenter.MainPresenter;
+import com.lucio.mvpapp.R;
 import com.lucio.mvpapp.view.adapter.FragmentListAdapter;
 import com.lucio.mvpapp.view.fragment.FourFragment;
 import com.lucio.mvpapp.view.fragment.OneFragment;
@@ -29,6 +30,8 @@ public class MainActivity extends BaseActivity implements MainContract.View {
     private RadioButton rbThree;
     private RadioButton rbFour;
 
+    private Toolbar toolbar;
+
     private List<String> pagerNameList;
     private List<Fragment> fragmentList;
 
@@ -41,19 +44,17 @@ public class MainActivity extends BaseActivity implements MainContract.View {
     }
 
     @Override
-    public boolean isShowActionBar() {
-        return true;
-    }
-
-    @Override
     public void initView() {
-        vpContent = (ViewPager) findViewById(R.id.vp_content);
-        rgFragment = (RadioGroup) findViewById(R.id.rg_fragment);
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        rbOne = (RadioButton) findViewById(R.id.rb_one);
-        rbTwo = (RadioButton) findViewById(R.id.rb_two);
-        rbThree = (RadioButton) findViewById(R.id.rb_three);
-        rbFour = (RadioButton) findViewById(R.id.rb_four);
+        vpContent = findViewById(R.id.vp_content);
+        rgFragment = findViewById(R.id.rg_fragment);
+
+        rbOne = findViewById(R.id.rb_one);
+        rbTwo = findViewById(R.id.rb_two);
+        rbThree = findViewById(R.id.rb_three);
+        rbFour = findViewById(R.id.rb_four);
     }
 
     @Override
@@ -85,11 +86,13 @@ public class MainActivity extends BaseActivity implements MainContract.View {
         FragmentListAdapter mAdapter = new FragmentListAdapter(getSupportFragmentManager(), fragmentList);
         vpContent.setAdapter(mAdapter);
 
-        getBar().setTitle(pagerNameList.get(0));
+        toolbar.setTitle(pagerNameList.get(0));
+
+        mPresenter.netRequest();
 //        设置标题栏左边的图标
-//        getBar().setHomeAsUpIndicator(R.drawable.ic_menu);
+//        toolbar.setHomeAsUpIndicator(R.drawable.ic_menu);
 //        设置标题栏左边的图标是否显示
-//        getBar().setDisplayHomeAsUpEnabled(true);
+//        toolbar.setDisplayHomeAsUpEnabled(true);
 
     }
 
@@ -107,18 +110,17 @@ public class MainActivity extends BaseActivity implements MainContract.View {
 
     @Override
     public void selectFragment(int position) {
-        getBar().setTitle(pagerNameList.get(position));
+        toolbar.setTitle(pagerNameList.get(position));
         vpContent.setCurrentItem(position);
     }
 
     @Override
     public void selectRadio(int position) {
         int radioId = R.id.rb_one;
-        if (position == 0) radioId = R.id.rb_one;
-        else if (position == 1) radioId = R.id.rb_two;
+        if (position == 1) radioId = R.id.rb_two;
         else if (position == 2) radioId = R.id.rb_three;
         else if (position == 3) radioId = R.id.rb_four;
-        getBar().setTitle(pagerNameList.get(position));
+        toolbar.setTitle(pagerNameList.get(position));
         rgFragment.check(radioId);
     }
 

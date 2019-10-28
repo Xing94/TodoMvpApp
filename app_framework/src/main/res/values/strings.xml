@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MvpApp</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="request_fail">网络错误</string>
+    <string name="request_error">请求失败</string>
+    <string name="network_unavailable">网络不可用</string>
+</resources>

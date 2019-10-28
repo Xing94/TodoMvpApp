@@ -3,8 +3,8 @@ package com.lucio.mvpapp.view.fragment;
 import android.os.Bundle;
 import android.view.View;
 
+import com.lucio.appframework.base.BaseFragment;
 import com.lucio.mvpapp.R;
-import com.lucio.mvpapp.base.BaseFragment;
 
 public class ThreeFragment extends BaseFragment {
 

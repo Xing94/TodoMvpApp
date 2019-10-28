@@ -3,7 +3,8 @@ package com.lucio.mvpapp.data.bean;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.lucio.mvpapp.base.BaseBean;
+import com.lucio.appframework.base.BaseBean;
+
 
 /**
  * 登录实体类

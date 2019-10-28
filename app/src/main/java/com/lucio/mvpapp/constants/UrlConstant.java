@@ -1,7 +1,5 @@
 package com.lucio.mvpapp.constants;
 
-import retrofit2.http.POST;
-
 /**
  * 接口常量类
  */
